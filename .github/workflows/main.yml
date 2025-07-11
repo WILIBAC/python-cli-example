@@ -1,0 +1,29 @@
+name: Python CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # O Windows, macOS, si lo necesitas
+
+    steps:
+    - uses: actions/checkout@v4 # Paso para clonar tu repositorio
+    - name: Set up Python
+      uses: actions/setup-python@v5 # Usa la acción para configurar Python
+      with:
+        python-version: '3.9' # Puedes especificar la versión de Python que necesites (ej. '3.8', '3.9', '3.10', '3.x')
+        # cache: 'pip' # Opcional: para cachear las dependencias de pip
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt # Si tienes un archivo requirements.txt
+
+    - name: Run tests # Si tienes pruebas, puedes ejecutar un comando aquí
+      run: |
+        python -m pytest # O python tu_script_de_pruebas.py, o lo que uses para tus tests
+        # Asegúrate de que pytest o el marco de pruebas esté instalado en tus requisitos
