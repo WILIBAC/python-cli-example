@@ -21,10 +21,6 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pytest
         pip install -r requirements.txt # O pip install tus_dependencias
 
-    - name: Run tests # Si tienes pruebas, puedes ejecutar un comando aquí
-      run: |
-        python -m pytest # O python tu_script_de_pruebas.py, o lo que uses para tus tests
-        # Asegúrate de que pytest o el marco de pruebas esté instalado en tus requisitos
+  
